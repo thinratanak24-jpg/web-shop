@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angkor Mart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Noto+Sans+Khmer:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style/color.css">
+  <link rel="icon" type="image/x-icon" href="img/1.png">
+
+</head>
+
+<body>
+
+  <input type="radio" name="category-filter" id="cat-all" class="cat-radio" checked>
+  <input type="radio" name="category-filter" id="cat-shoes" class="cat-radio">
+  <input type="radio" name="category-filter" id="cat-watches" class="cat-radio">
+  <input type="radio" name="category-filter" id="cat-electronics" class="cat-radio">
+  <input type="radio" name="category-filter" id="cat-clothing" class="cat-radio">
+  <input type="radio" name="category-filter" id="cat-bags" class="cat-radio">
+  <input type="radio" name="category-filter" id="cat-food" class="cat-radio">
+  <input type="radio" name="category-filter" id="cat-beauty" class="cat-radio">
+
+  <nav class="navbar">
+    <a class="nav-logo" href="index.html">Angkor <span>Mart</span></a>
+
+    <div class="nav-search">
+      <input type="text" placeholder="Search for products, brands and more…" id="searchInput">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="nav-actions">
+      <a class="nav-link-btn" href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a class="nav-link-btn" href="login.html"><i class="fas fa-user"></i><span>Login</span></a>
+      <a class="nav-link-btn register-style-btn" href="register.html"><i class="fas fa-user-plus"></i><span>Register</span></a>
+
+      <button class="nav-btn cart-badge">
+        <i class="fas fa-shopping-cart"></i><span>Cart</span>
+        <span class="badge-dot" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-tag">🔥 Welcome to Angkor Mart</div>
+      <h1>Shop Smart,<br><em>Live Better</em></h1>
+      <p>កូនខ្មែរអាចទិញផលិតផលបានយ៉ាងងាយស្រួល និងតម្លៃសរម្យនៅទីនេះ!!</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary"><i class="fas fa-bolt"></i> Shop Now</a>
+        <a href="register.html" class="btn-outline"><i class="fas fa-user-plus"></i> Sign Up Free</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-stat">
+        <div class="num">50K+</div>
+        <div class="lbl">Products</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flash-bar">
+    <div class="flash-title"><i class="fas fa-bolt"></i> Flash Sale Ends In</div>
+    <div class="countdown">
+      <span class="count-block" id="h">02</span>
+      <span class="count-sep">:</span>
+      <span class="count-block" id="m">45</span>
+      <span class="count-sep">:</span>
+      <span class="count-block" id="s">30</span>
+    </div>
+    <span style="color:#666; font-size:13px; margin-left:8px">Up to 70% off selected items</span>
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-wrapper">
+      <div class="slide"><img src="banner/1.png" alt="Promo 1"></div>
+      <div class="slide"><img src="banner/2.png" alt="Promo 2"></div>
+      <div class="slide"><img src="banner/3.png" alt="Promo 3"></div>
+      <div class="slide"><img src="banner/1.png" alt="Promo 1 Copy"></div>
+    </div>
+  </div>
+
+  <div class="category-strip" id="categoryStrip">
+    <label for="cat-all" class="cat-tab"><i class="fas fa-th"></i> All</label>
+    <label for="cat-shoes" class="cat-tab"><i class="fas fa-shoe-prints"></i> Shoes</label>
+    <label for="cat-watches" class="cat-tab"><i class="fas fa-clock"></i> Watches</label>
+    <label for="cat-electronics" class="cat-tab"><i class="fas fa-mobile-alt"></i> Electronics</label>
+    <label for="cat-clothing" class="cat-tab"><i class="fas fa-tshirt"></i> Clothing</label>
+    <label for="cat-bags" class="cat-tab"><i class="fas fa-shopping-bag"></i> Bags</label>
+    <label for="cat-food" class="cat-tab"><i class="fas fa-utensils"></i> Food</label>
+    <label for="cat-beauty" class="cat-tab"><i class="fas fa-spa"></i> Beauty</label>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">Popular <span>Products</span></h2>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card" data-category="shoes" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10; display: flex; flex-direction: column; gap: 5px;">
+          <span style="background: #e53935; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase;">Hot</span>
+          <span style="background: #00c896; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px;">-10%</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="fas fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Nike Air Sport Shoes"></div>
+        <div class="product-info">
+          <div class="product-name">Nike Air Sport Shoes</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(142)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-new">$45</span>
+            <span style="color: #666; text-decoration: line-through; font-size: 13px; margin-left: 8px;">$50</span>
+          </div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="watches" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #00c896; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px;">-15%</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Minimalist Wrist Watch"></div>
+        <div class="product-info">
+          <div class="product-name">Minimalist Wrist Watch</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(98)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-new">$29</span>
+            <span style="color: #666; text-decoration: line-through; font-size: 13px; margin-left: 8px;">$35</span>
+          </div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="electronics" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #e53935; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase;">Hot</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="fas fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="Pro Wireless Headphones"></div>
+        <div class="product-info">
+          <div class="product-name">Pro Wireless Headphones</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span style="color: #888; margin-left: 4px;">(210)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$75</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="bags" style="position: relative;">
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400" alt="Leather Crossbody Bag"></div>
+        <div class="product-info">
+          <div class="product-name">Leather Crossbody Bag</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(45)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$38</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="clothing" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #00c896; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px;">-20%</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" alt="Cotton Casual T-Shirt"></div>
+        <div class="product-info">
+          <div class="product-name">Cotton Casual T-Shirt</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(84)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-new">$14</span>
+            <span style="color: #666; text-decoration: line-through; font-size: 13px; margin-left: 8px;">$18</span>
+          </div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="electronics" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #e53935; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase;">Hot</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="fas fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400" alt="Smartphone Galaxy S25"></div>
+        <div class="product-info">
+          <div class="product-name">Smartphone Galaxy S25</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(320)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$599</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="beauty" style="position: relative;">
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400" alt="Skincare Glow Kit"></div>
+        <div class="product-info">
+          <div class="product-name">Skincare Glow Kit</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(67)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$32</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="food" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #00c896; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px;">-10%</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400" alt="Organic Coffee Beans"></div>
+        <div class="product-info">
+          <div class="product-name">Organic Coffee Beans</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span style="color: #888; margin-left: 4px;">(150)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-new">$18</span>
+            <span style="color: #666; text-decoration: line-through; font-size: 13px; margin-left: 8px;">$20</span>
+          </div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="shoes" style="position: relative;">
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400" alt="Running Sneakers Pro"></div>
+        <div class="product-info">
+          <div class="product-name">Running Sneakers Pro</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(112)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$65</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="watches" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10; display: flex; flex-direction: column; gap: 5px;">
+          <span style="background: #e53935; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase;">Hot</span>
+          <span style="background: #00c896; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px;">-25%</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="fas fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400" alt="Smart Watch Series 10"></div>
+        <div class="product-info">
+          <div class="product-name">Smart Watch Series 10</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(530)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-new">$199</span>
+            <span style="color: #666; text-decoration: line-through; font-size: 13px; margin-left: 8px;">$265</span>
+          </div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="clothing" style="position: relative;">
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400" alt="Denim Jacket Classic"></div>
+        <div class="product-info">
+          <div class="product-name">Denim Jacket Classic</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(39)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$55</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="electronics" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #e53935; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase;">Hot</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="fas fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400" alt="Gaming Mechanical Keyboard"></div>
+        <div class="product-info">
+          <div class="product-name">Gaming Mechanical Keyboard</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(94)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$49</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="electronics" style="position: relative;">
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=400" alt="MacBook Pro Skin Cover"></div>
+        <div class="product-info">
+          <div class="product-name">MacBook Pro Skin Cover</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(410)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$1299</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="shoes" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #00c896; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px;">-5%</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400" alt="Classic Leather Shoes"></div>
+        <div class="product-info">
+          <div class="product-name">Classic Leather Shoes</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(52)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-new">$79</span>
+            <span style="color: #666; text-decoration: line-through; font-size: 13px; margin-left: 8px;">$84</span>
+          </div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="clothing" style="position: relative;">
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400" alt="Vintage Sunglasses"></div>
+        <div class="product-info">
+          <div class="product-name">Vintage Sunglasses</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(24)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$23</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="electronics" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #e53935; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase;">Hot</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="fas fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400" alt="Polaroid Instant Camera"></div>
+        <div class="product-info">
+          <div class="product-name">Polaroid Instant Camera</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(165)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$95</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="beauty" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #e53935; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase;">Hot</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" alt="Hydrating Facial Serum"></div>
+        <div class="product-info">
+          <div class="product-name">Hydrating Facial Serum</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(73)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-new">$19</span>
+            <span style="color: #666; text-decoration: line-through; font-size: 13px; margin-left: 8px;">$28</span>
+          </div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="electronics" style="position: relative;">
+        <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+          <span style="background: #e53935; color: white; padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; text-transform: uppercase;">Hot</span>
+        </div>
+        <button class="btn-fav" onclick="this.classList.toggle('active')" style="position: absolute; top: 10px; right: 10px; z-index: 10; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);"><i class="far fa-heart"></i></button>
+        <div class="product-img-wrap"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400" alt="Bluetooth Speaker X100"></div>
+        <div class="product-info">
+          <div class="product-name">Bluetooth Speaker X100</div>
+          <div style="font-size: 12px; color: #ffbc00; margin: 4px 0 8px 0;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span style="color: #888; margin-left: 4px;">(120)</span>
+          </div>
+          <div class="product-price"><span class="price-new">$45</span></div>
+          <button class="btn-add-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Angkor Mart. All rights reserved. Made with ❤️ in Cambodia 🇰🇭</p>
+  </footer>
+
+  <script>
+    // ១. មុខងារ Countdown សម្រាប់កម្មវិធី Flash Sale (រត់ថយក្រោយរាល់ ១ វិនាទីម្តង)
+    // កំណត់ទិន្នន័យដើម៖ ២ ម៉ោង, ៤៥ នាទី, និង ៣០ វិវិនាទី (គិតជាវិនាទីសរុប)
+    let totalSeconds = (2 * 3600) + (45 * 60) + 30;
+    
+    const countdownInterval = setInterval(() => {
+      // ប្រសិនបើអស់ម៉ោង ត្រូវបញ្ឈប់ការរត់
+      if (totalSeconds <= 0) {
+        clearInterval(countdownInterval);
+        return;
+      }
+      
+      totalSeconds--; // ដកថយក្រោយម្តង ១ វិនាទី
+      
+      // គណនាបំបែកវិនាទីសរុប ទៅជា ម៉ោង នាទី និងវិវិនាទីវិញ
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      // ចាប់យក Element តាម ID ដើម្បីយកទៅបង្ហាញលើអេក្រង់ HTML
+      const hElement = document.getElementById('h');
+      const mElement = document.getElementById('m');
+      const sElement = document.getElementById('s');
+
+      // បង្ហាញតម្លៃដោយបន្ថែមលេខ ០ ខាងមុខប្រសិនបើតម្លៃតូចជាង ១០ (ឧទាហរណ៍៖ 09, 08)
+      if (hElement) hElement.textContent = String(hours).padStart(2, '0');
+      if (mElement) mElement.textContent = String(minutes).padStart(2, '0');
+      if (sElement) sElement.textContent = String(seconds).padStart(2, '0');
+    }, 1000);
+
+    // ២. មុខងារកើនលេខរទេះទិញអីវ៉ាន់ និងបង្កើតចលនា (Add to Cart Logic)
+    function addToCartAnimation() {
+      const cartBadge = document.getElementById('cartCount');
+      if (cartBadge) {
+        // ចាប់យកតម្លៃលេខបច្ចុប្បន្នលើ Navbar បើគ្មានទេឱ្យស្មើ ០
+        let currentCount = parseInt(cartBadge.textContent) || 0;
+        // បូកបង្កើនចំនួនថែម ១
+        cartBadge.textContent = currentCount + 1;
+        
+        // បង្កើត Effect ញាក់ពង្រីកធំថ្នមៗ (Animation Pop) ពេលចុចចំប៊ូតុង
+        cartBadge.style.transform = 'scale(1.4)';
+        cartBadge.style.transition = 'transform 0.1s ease';
+        
+        // កំណត់ឱ្យវារួញមកទំហំដើមវិញក្រោយរយៈពេល ០.១ វិនាទី
+        setTimeout(() => {
+          cartBadge.style.transform = 'scale(1)';
+        }, 100);
+      }
+    }
+
+    // ចាប់យកប៊ូតុងដែលមាន Class ".btn-add-cart" ទាំងអស់នៅក្នុងទំព័រ
+    // ដើម្បីដាក់ព្រឹត្តិការណ៍ចុច (Click Event Listener) ទៅឱ្យវាដំណើរការមុខងារ addToCartAnimation()
+    document.querySelectorAll('.btn-add-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        addToCartAnimation();
+      });
+    });
+  </script>
+
+</body>
+</html>
