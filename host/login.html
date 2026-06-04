@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Angkor Mart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="img/1.png">
+  
+  <style>
+    /* ═══════════════════════════════════════
+       VARIABLE & SYSTEM THEME (ការកំណត់ប្រថេរពណ៌ និងទំហំរួម)
+       ═══════════════════════════════════════ */
+    :root {
+      --brand: #ff6b00; --brand-dark: #d95800; --brand-light: #fff3e8; --accent: #00c896;
+      --dark: #0f0f0f; --dark2: #1a1a1a; --dark3: #242424; --surface: #fff; --surface2: #f8f8f8;
+      --border: #ebebeb; --text: #1a1a1a; --text-muted: #888; --text-light: #bbb;
+      --nav-h: 68px; --radius: 14px; --shadow: 0 4px 24px rgba(0, 0, 0, 0.08); --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.14);
+    }
+
+    /* លុបចោលគម្លាតលំនាំដើម និងកំណត់ប្រអប់ទំហំឱ្យត្រឹមត្រូវ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* កំណត់ទម្រង់ Body ឱ្យនៅចំកណ្តាលអេក្រង់ជានិច្ច */
+    body {
+      font-family: 'Sora', 'Noto Sans Khmer', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding-top: var(--nav-h); /* ទុកចន្លោះឱ្យ Navbar កុំឱ្យបាំងអត្ថបទ */
+    }
+
+    /* ═══════════════════════════════════════
+       NAVBAR & COMPONENTS (របារមឺនុយខាងលើ)
+       ═══════════════════════════════════════ */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-h); background: var(--dark);
+      display: flex; align-items: center; padding: 0 24px; gap: 20px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    }
+    .nav-logo { font-size: 22px; font-weight: 800; text-decoration: none; color: #fff; }
+    .nav-logo span { color: var(--brand); }
+
+    /* ប្រអប់ស្វែងរក */
+    .nav-search {
+      flex: 1; max-width: 520px; display: flex; align-items: center;
+      background: #2a2a2a; border-radius: 10px; border: 1.5px solid #333;
+    }
+    .nav-search:focus-within { border-color: var(--brand); }
+    .nav-search input { flex: 1; background: none; border: none; outline: none; padding: 10px 14px; color: #fff; }
+    .nav-search button { background: var(--brand); border: none; padding: 10px 16px; color: #fff; cursor: pointer; }
+
+    /* ប៊ូតុងមឺនុយខាងស្តាំ */
+    .nav-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+    .nav-link-btn {
+      background: none; border: none; color: #ccc; cursor: pointer; padding: 8px 12px;
+      display: flex; flex-direction: column; align-items: center; text-decoration: none;
+    }
+    .nav-link-btn:hover { color: #ff6b00; background: rgba(255, 107, 0, 0.1); }
+    
+    /* ប៊ូតុង Register ឱ្យមានពណ៌លេចធ្លោ */
+    .register-style-btn { background-color: var(--brand) !important; color: white !important; border-radius: 10px !important; }
+
+    /* កាតបង្ហាញលេខទំនិញក្នុងកន្ត្រក */
+    .cart-badge { position: relative; }
+    .badge-dot {
+      position: absolute; top: -4px; right: -4px; background: var(--brand);
+      color: #fff; font-size: 10px; width: 18px; height: 18px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ═══════════════════════════════════════
+       AUTH CARD DESIGN (ប្រអប់ Login)
+       ═══════════════════════════════════════ */
+    .auth-card {
+      background: #1a1a1a; padding: 40px; border-radius: 20px;
+      width: 100%; max-width: 400px; border: 1px solid #2a2a2a;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    .auth-header h2 { font-size: 24px; color: #ff6b00; margin-bottom: 8px; }
+    .auth-header p { color: #888; font-size: 14px; margin-bottom: 24px; }
+    
+    /* គ្រប់គ្រង Inputs និង Labels */
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 12px; color: #888; margin-bottom: 8px; text-transform: uppercase; }
+    .form-input {
+      width: 100%; padding: 12px; background: #2a2a2a;
+      border: 1.5px solid #333; border-radius: 10px; color: #fff; outline: none;
+    }
+    .form-input:focus { border-color: #ff6b00; }
+
+    /* ប៊ូតុង Sign In */
+    .btn-submit {
+      width: 100%; padding: 14px; background: linear-gradient(135deg, #ff6b00, #ff9500);
+      border: none; border-radius: 10px; color: #fff; font-weight: 700; cursor: pointer;
+    }
+    .auth-footer { text-align: center; margin-top: 20px; font-size: 13px; color: #666; }
+    .auth-footer a { color: #ff6b00; text-decoration: none; }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a class="nav-logo" href="index.html">Angkor <span>Mart</span></a>
+    <div class="nav-search">
+      <input type="text" placeholder="Search for products, brands and more…" id="searchInput">
+      <button onclick="doSearch()"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-link-btn" href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a class="nav-link-btn" href="login.html"><i class="fas fa-user"></i><span>Login</span></a>
+      <a class="nav-link-btn register-style-btn" href="register.html"><i class="fas fa-user-plus"></i><span>Register</span></a>
+      <button class="nav-link-btn cart-badge">
+        <i class="fas fa-shopping-cart"></i><span>Cart</span>
+        <span class="badge-dot" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="auth-card">
+    <div class="auth-header">
+      <h2><i class="fas fa-sign-in-alt"></i> User Login</h2>
+      <p>Please enter your account details to continue.</p>
+    </div>
+    <form action="index.html">
+      <div class="form-group">
+        <label class="form-label">Email or Username</label>
+        <input type="text" class="form-input" placeholder="Enter email or username" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" placeholder="Enter password" required>
+      </div>
+      <button type="submit" class="btn-submit">Sign In</button>
+    </form>
+    <div class="auth-footer">
+      Don't have an account? <a href="register.html">Register here</a>
+    </div>
+  </div>
+
+</body>
+</html>

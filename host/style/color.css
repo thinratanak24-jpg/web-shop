@@ -1,0 +1,337 @@
+/* ═══════════════════════════════════════
+   VARIABLE & SYSTEM THEME (ផ្នែកប្រកាសប្រថេរ និងស្ទីលទូទៅ)
+   ═══════════════════════════════════════ */
+:root {
+  /* ការបង្កើតប្រថេរពណ៌ (CSS Variables) សម្រាប់យកទៅប្រើប្រាស់ឡើងវិញ ដើម្បីងាយស្រួលគ្រប់គ្រងពន្លឺពណ៌រួម */
+  --brand: #ff6b00;        /* ពណ៌ចម្បងរបស់ម៉ាត (លឿងទុំ) */
+  --brand-dark: #d95800;   /* ពណ៌លឿងទុំចាស់ (សម្រាប់ពេល Hover) */
+  --brand-light: #fff3e8;  /* ពណ៌លឿងទុំខ្ចីខ្លាំង (សម្រាប់ផ្ទៃខាងក្រោយប៊ូតុងតូចៗ) */
+  --accent: #00c896;       /* ពណ៌បៃតងស្រស់ (សម្រាប់ស្លាកបញ្ចុះតម្លៃ) */
+  
+  /* ក្រុមពណ៌ស្រទាប់ផ្ទៃ និងអក្សរ */
+  --dark: #0f0f0f;         /* ពណ៌ខ្មៅងងឹត (សម្រាប់ Navbar, Footer) */
+  --dark2: #1a1a1a;        
+  --dark3: #242424;        
+  --surface: #fff;         /* ពណ៌សផ្ទៃកាតផលិតផល */
+  --surface2: #f8f8f8;     /* ពណ៌ប្រផេះខ្ចីសម្រាប់ផ្ទៃ Background គេហទំព័រទាំងមូល */
+  --border: #ebebeb;       /* ពណ៌បន្ទាត់ខណ្ឌចែក */
+  --text: #1a1a1a;         /* ពណ៌អក្សរទូទៅ */
+  --text-muted: #888;      /* ពណ៌អក្សរស្រអាប់បន្តិច */
+  --text-light: #bbb;      /* ពណ៌អក្សរស្រាល */
+  
+  /* ទំហំ និងទម្រង់រួម */
+  --nav-h: 68px;           /* កម្ពស់របស់របារ Navbar */
+  --radius: 14px;          /* កម្រិតកោងនៃជ្រុងកាតទំនិញ */
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);       /* ស្រមោលកម្រិតស្រាល */
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.14);    /* ស្រមោលកម្រិតធ្ងន់ (ពេលលោតអណ្តែត) */
+}
+
+/* លុបគម្លាតលំនាំដើម (Reset Margins/Paddings) និងកំណត់ box-sizing ឱ្យទំហំកាតមិនប្រែប្រួលពេលថែម Border */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ធ្វើឱ្យពេលចុច Link រត់ទៅកាន់ផ្នែកណាមួយ មានចលនារលូន (Smooth Scrolling) */
+html { scroll-behavior: smooth; }
+
+/* កំណត់ Font គ្រួសាររួម (Sora សម្រាប់អង់គ្លេស និង Noto Sans Khmer សម្រាប់ភាសាខ្មែរ) */
+body { font-family: 'Sora', 'Noto Sans Khmer', sans-serif; background: var(--surface2); color: var(--text); min-height: 100vh; }
+
+/* ═══════════════════════════════════════
+   NAVBAR & COMPONENTS (ផ្នែករបារ مីនុយខាងលើ)
+   ═══════════════════════════════════════ */
+/* របារ Navbar ធំ៖ ប្រើ position: fixed ដើម្បីឱ្យវានៅជាប់ផ្នែកខាងលើរហូតទោះបីជា Scroll ចុះក្រោម */
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--nav-h); background: var(--dark); display: flex; align-items: center; padding: 0 24px; gap: 20px; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+
+/* អក្សរទម្រង់ Logo របស់ម៉ាត */
+.nav-logo { font-size: 22px; font-weight: 800; text-decoration: none; letter-spacing: -0.5px; white-space: nowrap; color: #fff; }
+.nav-logo span { color: var(--brand); }
+
+/* ប្រអប់ស្វែងរក (Search Bar Container) */
+.nav-search { flex: 1; max-width: 520px; display: flex; align-items: center; background: #2a2a2a; border-radius: 10px; border: 1.5px solid #333; overflow: hidden; transition: border-color 0.2s; }
+/* ពេលអ្នកប្រើប្រាស់ឃ្លិកចំប្រអប់វាយអក្សរ ឱ្យបន្ទាត់ព្រំដែនដូរទៅពណ៌លឿងទុំ */
+.nav-search:focus-within { border-color: var(--brand); }
+.nav-search input { flex: 1; background: none; border: none; outline: none; padding: 10px 14px; color: #fff; font-size: 14px; font-family: inherit; }
+.nav-search input::placeholder { color: #666; }
+/* ប៊ូតុងរូបកែវពង្រីកសម្រាប់ស្វែងរក */
+.nav-search button { background: var(--brand); border: none; padding: 10px 16px; color: #fff; cursor: pointer; font-size: 15px; transition: background 0.2s; }
+.nav-search button:hover { background: var(--brand-dark); }
+
+/* ផ្នែកបង្គុំប៊ូតុងបញ្ជាខាងស្តាំដៃ (Home, Login, Register, Cart) */
+.nav-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.nav-btn { background: none; border: none; color: #ccc; cursor: pointer; padding: 8px 12px; border-radius: 8px; font-size: 13px; display: flex; flex-direction: column; align-items: center; gap: 2px; transition: color 0.2s, background 0.2s; font-family: inherit; white-space: nowrap; text-decoration: none; }
+.nav-btn i { font-size: 18px; }
+.nav-btn:hover { color: var(--brand); background: rgba(255,107,0,0.1); }
+
+/* ប៊ូតុងប្រភេទជាតំណភ្ជាប់ (Link Icons) */
+.nav-link-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column; /* តម្រៀប Icon នៅពីលើ ហើយអក្សរនៅពីក្រោមជួរឈរ */
+  align-items: center;
+  gap: 2px;
+  transition: color 0.2s, background 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+  text-decoration: none; /* លុបបន្ទាត់ពីក្រោមអក្សរលំនាំដើមរបស់ Tag <a> */
+}
+.nav-link-btn i { font-size: 18px; }
+.nav-link-btn:hover { color: #ff6b00; background: rgba(255,107,0,0.1); }
+
+/* ប៊ូតុងចុះឈ្មោះ (Register Button)៖ បង្កើតស្ទីលឱ្យមានលក្ខណៈលេចធ្លោដាច់គេ */
+.register-style-btn { background-color: var(--brand) !important; color: white !important; border-radius: 10px !important; padding: 8px 16px !important; font-weight: 600; }
+.register-style-btn:hover { background-color: var(--brand-dark) !important; }
+
+/* រង្វង់លេខពណ៌ក្រហមបង្ហាញចំនួនទំនិញលើកាត (Cart Badge Dot) */
+.cart-badge { position: relative; display: inline-block; }
+.badge-dot { position: absolute; top: -4px; right: -4px; background: var(--brand); color: #fff; font-size: 10px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--dark); }
+
+/* ═══════════════════════════════════════
+   HERO SECTION (ផ្នែកផ្ទាំងផ្សព្វផ្សាយធំខាងលើ)
+   ═══════════════════════════════════════ */
+.hero { margin-top: var(--nav-h); background: linear-gradient(135deg, #0f0f0f 0%, #1e1006 50%, #0f0f0f 100%); position: relative; overflow: hidden; padding: 60px 40px; display: flex; align-items: center; justify-content: space-between; min-height: 380px; }
+/* ប្រើប្រាស់ Pseudo-element ::before ដើម្បីបង្កើតពន្លឺរស្មីពណ៌លឿងទុំចេញពីចំហៀងខាងស្តាំព្រិលៗ (Glow Effect) */
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(255,107,0,0.15) 0%, transparent 60%); }
+.hero-text { position: relative; z-index: 1; max-width: 500px; }
+/* ស្លាកពាក្យ Welcome តូច */
+.hero-tag { display: inline-block; background: var(--brand); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+/* ប្រើប្រាស់ clamp() ដើម្បីឱ្យទំហំអក្សរចំណងជើង تغែប្រួលធំតូចស្វ័យប្រវត្តិតាមទំហំអេក្រង់ Device (Responsive Font) */
+.hero h1 { font-size: clamp(28px, 4vw, 52px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; }
+.hero h1 em { color: var(--brand); font-style: normal; }
+.hero p { color: #aaa; font-size: 16px; line-height: 1.6; margin-bottom: 28px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ប៊ូតុងចម្បង Shop Now មានស្រមោលពណ៌លឿងទុំបញ្ចេញពន្លឺ */
+.btn-primary { background: var(--brand); color: #fff; border: none; padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; text-decoration: none; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(255,107,0,0.4); display: inline-flex; align-items: center; gap: 8px; }
+/* ពេល Hover ឱ្យប៊ូតុងអណ្តែតឡើងលើបន្តិច (translateY) និងពង្រីកស្រមោលឱ្យធំជាងមុន */
+.btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,0,0.5); }
+/* ប៊ូតុងបន្ទាត់ជុំវិញគ្មានពណ៌ផ្ទៃក្រោយ (Sign Up Free) */
+.btn-outline { background: none; color: #fff; border: 1.5px solid #444; padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; text-decoration: none; transition: border-color 0.2s, color 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-outline:hover { border-color: var(--brand); color: var(--brand); }
+
+/* ផ្ទាំងបង្ហាញស្ថិតិលោតអណ្តែតស្រអាប់ (Glassmorphism Effect) នៅខាងស្តាំដៃ */
+.hero-visual { position: relative; z-index: 1; display: flex; gap: 16px; }
+.hero-stat { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 20px 24px; text-align: center; }
+.hero-stat .num { font-size: 28px; font-weight: 800; color: var(--brand); }
+.hero-stat .lbl { font-size: 12px; color: #888; margin-top: 4px; }
+
+/* របាររំកិលជ្រើសរើសប្រភេទផលិតផល (Category Strip) */
+/* ប្រើ overflow-x: auto និង scrollbar-width: none ដើម្បីអាចអូសទៅឆ្វេងស្តាំបានលើទូរស័ព្ទដោយលាក់របាររំកិល */
+.category-strip { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.cat-tab { background: none; border: none; padding: 16px 18px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; font-family: inherit; border-bottom: 2.5px solid transparent; transition: color 0.2s, border-color 0.2s; display: inline-flex; align-items: center; gap: 7px; text-decoration: none; }
+.cat-tab:hover { color: var(--brand); }
+.cat-tab.active { color: var(--brand); border-bottom-color: var(--brand); }
+
+/* ═══════════════════════════════════════
+   FLASH SALE BAR STYLING (ផ្នែករបារបញ្ចុះតម្លៃ និងនាឡិការត់ថយក្រោយ)
+   ═══════════════════════════════════════ */
+.flash-bar {
+  background-color: #1a1a1a; /* ពណ៌ផ្ទៃក្រោយប្រផេះងងឹត */
+  border: 1px solid #2a2a2a; /* បន្ទាត់ជុំវិញប្រអប់ */
+  padding: 12px 20px;        /* គម្លាតពីអក្សរទៅគែមប្រអប់ */
+  display: flex;             /* រៀបចំខ្លឹមសារឱ្យរត់ជួរដេក */
+  align-items: center;       /* ឱ្យមាតិកាទាំងអស់នៅចំកណ្តាលតាមជួរដេក */
+  flex-wrap: wrap;           /* ការពារកុំឱ្យធ្លាក់ជួរ ឬបាក់ Layout ពេលអេក្រង់តូច */
+  gap: 15px;                 /* គម្លាតរវាងប្លុកនីមួយៗ */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ដាក់ស្រមោលតិចៗពីក្រោម */
+}
+
+/* ចំណងជើង Flash Sale Ends In */
+.flash-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* គម្លាតរវាង Icon រន្ទះ និងអក្សរ */
+}
+
+/* ពណ៌ Icon រន្ទះ */
+.flash-title i {
+  color: #ff6b00; /* ពណ៌លឿងទុំ */
+}
+
+/* ផ្នែកប្រអប់លេខ Countdown */
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* គម្លាតរវាងប្រអប់លេខ និងសញ្ញាចុចពីរ : */
+}
+
+/* ស្ទីលប្រអប់លេខ (ម៉ោង នាទី វិនាទី) */
+.count-block {
+  background-color: #ff6b00; /* ពណ៌ផ្ទៃក្រោយប្រអប់លេខ (លឿងទុំ) */
+  color: #ffffff;            /* ពណ៌លេខខាងក្នុង (ស) */
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 32px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* ស្ទីលសញ្ញាចុចពីរ (:) */
+.count-sep {
+  color: #ff6b00;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ═══════════════════════════════════════
+   SLIDER STYLING & INFINITE LOOP ANIMATION (ផ្នែកស្លាយរូបភាព Banner វិលជុំ)
+   ═══════════════════════════════════════ */
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  height: 430px;
+  overflow: hidden; /* លាក់រាល់រូបភាពណាដែលហៀរចេញពីប្រអប់ Container */
+}
+.slider-wrapper {
+  display: flex;
+  width: 400%; /* ដោយសារមាន ៤ ស្លាយ ទើបកំណត់ទំហំទទឹងស្មើ 400% */
+  height: 100%;
+  animation: slideAuto 15s infinite; /* ដំណើរការមុខងារ سلាយរត់ស្វ័យប្រវត្តិតាម Keyframes រយៈពេល ១៥ វិនាទី វិលជុំមិនចេះចប់ */
+}
+.slide {
+  width: 25%; /* ស្លាយនីមួយៗយកទំហំ ២៥% ស្មើៗគ្នានៃផ្ទៃមេ (Wrapper) */
+  height: 430px;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+
+/* គណនាភាគរយ (%) នៃការរំកិលដូររូបភាពតាមពេលវេលា (translateX) សម្រាប់ Infinite Banner */
+@keyframes slideAuto {
+  0%, 28% { transform: translateX(0%); }      /* បង្ហាញរូបទី ១ */
+  33%, 61% { transform: translateX(-25%); }   /* រំកិលទៅរូបទី ២ */
+  66%, 94% { transform: translateX(-50%); }   /* រំកិលទៅរូបទី ៣ */
+  99.99% { transform: translateX(-75%); }    /* រំកិលទៅរូបទី ៤ (រូប Copy របស់ទី១) */
+  100% { transform: translateX(0%); }         /* លោតត្រឡប់មកចាប់ផ្តើមរូបទី ១ វិញភ្លាមៗដោយមិនឱ្យភ្នែកមើលទាន់ */
+}
+
+/* ═══════════════════════════════════════
+   PRODUCT SECTION & CARDS (ផ្នែកប្លុកបង្ហាញកាតទំនិញ)
+   ═══════════════════════════════════════ */
+.section { padding: 40px 24px; max-width: 1400px; margin: 0 auto; }
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.section-title { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
+.section-title span { color: var(--brand); }
+
+/* ប្រើប្រាស់ CSS Grid សម្រាប់រៀបចំកាតផលិតផលឱ្យធ្លាក់ជួរតាមទំហំអេក្រង់ដោយស្វ័យប្រវត្ត (Auto-fill Responsive Grid) */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+
+/* កាតផលិតផលទូទៅ */
+.product-card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; cursor: pointer; position: relative; }
+/* ពេលយកលុបលើកាតផលិតផល (Hover) ឱ្យកាតហោះអណ្តែតឡើងលើ និងបញ្ចេញស្រមោលស្អាត */
+.product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+/* ប្រអប់ព័ទ្ធជុំវិញរូបភាពទំនិញ */
+.product-img-wrap { position: relative; background: var(--surface2); aspect-ratio: 1; overflow: hidden; }
+.product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+/* ពេល Hover លើកាត ធ្វើឱ្យរូបភាពផលិតផលរីកធំឡើងបន្តិចថ្នមៗ (Zoom Effect) */
+.product-card:hover .product-img-wrap img { transform: scale(1.07); }
+
+.product-info { padding: 14px; }
+.product-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+.product-price { display: flex; align-items: center; gap: 8px; }
+.price-new { font-size: 16px; font-weight: 800; color: var(--brand); }
+/* ប៊ូតុង Add to Cart ពណ៌ផ្ទៃក្រោយលឿងទុំខ្ចី អក្សរពណ៌លឿងទុំចាស់ */
+.btn-add-cart { width: 100%; margin-top: 10px; background: var(--brand-light); color: var(--brand); border: none; padding: 9px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
+
+/* ═══════════════════════════════════════
+   FAVORITE (HEART) BUTTON INTERACTIVE STYLES (ផ្នែកស្ទីលប៊ូតុងបេះដូងពេលចុចចំ)
+   ═══════════════════════════════════════ */
+/* ស្ថានភាពពេលប៊ូតុងបេះដូងត្រូវបានបើកដំណើរការ (Active) ឱ្យដូរទៅផ្ទៃពណ៌ផ្កាឈូក/ក្រហម និងអក្សរក្រហម */
+.btn-fav.active {
+  color: #ff3366 !important;
+  background: rgba(255, 51, 102, 0.2) !important;
+}
+.btn-fav i {
+  transition: transform 0.2s ease;
+}
+/* ពេលកំពុងចុចសង្កត់ចំ (Active State) ឱ្យរូបបេះដូងរីកធំជាងមុនបន្តិចរួចរួមមកវិញបង្កើតជាចលនាដកដង្ហើម */
+.btn-fav:active i {
+  transform: scale(1.3); 
+}
+
+/* ═══════════════════════════════════════
+   FOOTER (ផ្នែកបាតខាងក្រោមគេនៃទំព័រ)
+   ═══════════════════════════════════════ */
+footer { background: var(--dark); color: #888; padding: 48px 24px 24px; margin-top: 40px; text-align: center; font-size: 13px; }
+footer a { color: #555; text-decoration: none; font-weight: 600; }
+footer a:hover { color: var(--brand); }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE MEDIA QUERIES (MOBILE) (ផ្នែកកែសម្រួលទម្រង់ Layout លើទូរស័ព្ទដៃ)
+   ═══════════════════════════════════════ */
+/* សម្រាប់ឧបករណ៍ដែលមានទំហំអេក្រង់តូចជាង 768px (Tablet/Mobile) ឱ្យបន្ថយកម្ពស់ស្លាយបដា និងរំកិលចុះក្រោមដើម្បីកុំឱ្យបាំង Navbar */
+@media (max-width: 768px) {
+  .slider-container { height: 220px; margin-top: 75px; }
+}
+
+/* សម្រាប់ឧបករណ៍ទូរស័ព្ទដៃអេក្រង់តូចជាង 576px ឱ្យរបារ Flash Sale ប្តូរទម្រង់ជាជួរឈរវិញដើម្បីកុំឱ្យហៀរអេក្រង់ */
+@media (max-width: 576px) {
+  .flash-bar {
+    flex-direction: column;  /* ឱ្យមាតិកាធ្លាក់មកជួរឈរឈរតម្រៀបគ្នាវិញ */
+    align-items: flex-start; /* ឱ្យខ្លឹមសារនិងអក្សរទាំងអស់រត់ទៅតម្រឹមខាងឆ្វេង */
+    gap: 10px;
+    padding: 16px;
+  }
+}
+
+/* ស្ទីលបន្ថែមធានាឱ្យរូបបេះដូងដូរពណ៌ក្រហមបានត្រឹមត្រូវរលូន */
+.btn-fav.active i {
+  color: #ff3366 !important;
+}
+.btn-fav i {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.btn-fav:active i {
+  transform: scale(1.3);
+}
+
+/* ═══════════════════════════════════════
+   PURE CSS FILTER ENGINE (ប្រព័ន្ធគ្រប់គ្រងការស្វែងរក និងបង្ហាញតាមប្រភេទផលិតផលដោយមិនប្រើ JS)
+   ═══════════════════════════════════════ */
+/* លាក់ Radio Buttons ពិតប្រាកដមិនឱ្យបង្ហាញលើអេក្រង់ */
+.cat-radio {
+  display: none;
+}
+
+/* ប្រព័ន្ធបញ្ជាលាក់/បង្ហាញកាតទំនិញតាមប្រភេទ៖ លំនាំដើមបើជ្រើសរើស All (#cat-all:checked) ឱ្យបង្ហាញកាតទាំងអស់ (display: block) */
+#cat-all:checked ~ .section .product-grid .product-card { display: block; }
+
+/* ល្បិចបច្ចេកទេស (CSS Selector Trick)៖ ប្រសិនបើ Radio Button នៃប្រភេទណាមួយត្រូវបាន Checked (ឧទាហរណ៍ #cat-shoes:checked) 
+   នោះរាល់កាតទំនិញណាដែលមិនមាន [data-category="shoes"] គឺត្រូវលាក់ចោលទាំងអស់ (display: none) */
+#cat-shoes:checked ~ .section .product-grid .product-card:not([data-category="shoes"]) { display: none; }
+#cat-watches:checked ~ .section .product-grid .product-card:not([data-category="watches"]) { display: none; }
+#cat-electronics:checked ~ .section .product-grid .product-card:not([data-category="electronics"]) { display: none; }
+#cat-clothing:checked ~ .section .product-grid .product-card:not([data-category="clothing"]) { display: none; }
+#cat-bags:checked ~ .section .product-grid .product-card:not([data-category="bags"]) { display: none; }
+#cat-food:checked ~ .section .product-grid .product-card:not([data-category="food"]) { display: none; }
+#cat-beauty:checked ~ .section .product-grid .product-card:not([data-category="beauty"]) { display: none; }
+
+/* ធ្វើឱ្យប៊ូតុង Label នៃ Tab ប្តូរពណ៌ទៅជាពណ៌លឿងទុំ និងមានបន្ទាត់ពីក្រោមភ្លាមៗ ទៅតាមស្ថានភាព Radio Button ណាមួយដែលកំពុង Checked (Active Tab Style) */
+#cat-all:checked ~ .category-strip label[for="cat-all"],
+#cat-shoes:checked ~ .category-strip label[for="cat-shoes"],
+#cat-watches:checked ~ .category-strip label[for="cat-watches"],
+#cat-electronics:checked ~ .category-strip label[for="cat-electronics"],
+#cat-clothing:checked ~ .category-strip label[for="cat-clothing"],
+#cat-bags:checked ~ .category-strip label[for="cat-bags"],
+#cat-food:checked ~ .category-strip label[for="cat-food"],
+#cat-beauty:checked ~ .category-strip label[for="cat-beauty"] {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+/* កែសម្រួលស្ទីលសម្រាប់ប៊ូតុងបេះដូងសំណព្វចិត្តបន្ថែម */
+.btn-fav.active i {
+  color: #ff3366 !important;
+}
